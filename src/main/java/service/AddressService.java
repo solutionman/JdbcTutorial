@@ -112,7 +112,7 @@ public class AddressService extends Util implements AddressDAO {
     public void update(Address address) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql = "UPDATE ADDRESS SET COUNTRY=? CITY=?, STREET=?, POST_CODE=? WHERE ID=?";
+        String sql = "UPDATE ADDRESS SET COUNTRY=?, CITY=?, STREET=?, POST_CODE=? WHERE ID=?";
 
         try{
             preparedStatement = connection.prepareStatement(sql);
