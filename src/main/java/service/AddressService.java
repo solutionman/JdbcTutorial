@@ -137,7 +137,29 @@ public class AddressService extends Util implements AddressDAO {
     }
 
     @Override
-    public void delete(Address address) {
+    public void delete(Address address) throws SQLException {
+        PreparedStatement preparedStatement = null;
 
+        String sql = "DELETE FROM ADDRESS WHERE ID=?";
+
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setLong(1, address.getId());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if(preparedStatement != null){
+                preparedStatement.close();
+            }
+            if(connection != null){
+                connection.close();
+            }
+        }
     }
 }
+
+
+
