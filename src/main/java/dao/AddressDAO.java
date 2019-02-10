@@ -11,7 +11,7 @@ public interface AddressDAO {
     void add(Address address) throws SQLException;
 
     // read
-    List<Address> getAll();
+    List<Address> getAll() throws SQLException;
 
     Address getById(Long id);
 
