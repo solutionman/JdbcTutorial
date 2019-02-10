@@ -8,7 +8,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private Date birthday;
-    private Long addressID;
+    private Long addressId;
 
     public Employee(){
 
@@ -46,12 +46,12 @@ public class Employee {
         this.birthday = birthday;
     }
 
-    public Long getAddressID() {
-        return addressID;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public void setAddressID(Long addressID) {
-        this.addressID = addressID;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Employee {
         if (firstName != null ? !firstName.equals(employee.firstName) : employee.firstName != null) return false;
         if (lastName != null ? !lastName.equals(employee.lastName) : employee.lastName != null) return false;
         if (birthday != null ? !birthday.equals(employee.birthday) : employee.birthday != null) return false;
-        return addressID != null ? addressID.equals(employee.addressID) : employee.addressID == null;
+        return addressId != null ? addressId.equals(employee.addressId) : employee.addressId == null;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class Employee {
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
-        result = 31 * result + (addressID != null ? addressID.hashCode() : 0);
+        result = 31 * result + (addressId != null ? addressId.hashCode() : 0);
         return result;
     }
 
@@ -85,7 +85,7 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthday=" + birthday +
-                ", addressID=" + addressID +
+                ", addressID=" + addressId +
                 '}';
     }
 }
