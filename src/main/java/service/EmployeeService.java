@@ -27,6 +27,8 @@ public class EmployeeService extends Util implements EmployeeDAO {
             preparedStatement.setDate(4, employee.getBirthday());
             preparedStatement.setLong(5, employee.getAddressId());
 
+            preparedStatement.executeUpdate();
+
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
@@ -87,7 +89,7 @@ public class EmployeeService extends Util implements EmployeeDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             employee.setId(resultSet.getLong("ID"));
             employee.setFirstName(resultSet.getString("FIRST_NAME"));
-            employee.setLastName(resultSet.getString("ADDRESS_ID"));
+            employee.setLastName(resultSet.getString("LAST_NAME"));
             employee.setBirthday(resultSet.getDate("BIRTHDAY"));
             employee.setAddressId(resultSet.getLong("ADDRESS_ID"));
 
