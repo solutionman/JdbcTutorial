@@ -76,8 +76,36 @@ public class AddressService extends Util implements AddressDAO {
     }
 
     @Override
-    public Address getById(Long id) {
-        return null;
+    public Address getById(Long id) throws SQLException{
+        PreparedStatement preparedStatement = null;
+
+        String sql = "SELECT ID, COUNTRY, CITY, STREET, POST_CODE FROM ADDRESS WHERE ID = ?";
+
+        Address address = new Address();
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            address.setId(resultSet.getLong("ID"));
+            address.setCountry(resultSet.getString("COUNTRY"));
+            address.setCity(resultSet.getString("CITY"));
+            address.setStreet(resultSet.getString("STREET"));
+            address.setPostCode(resultSet.getString("POST_CODE"));
+
+            preparedStatement.executeQuery();
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if(preparedStatement != null){
+                preparedStatement.close();
+            }
+            if(connection != null){
+                connection.close();
+            }
+        }
+        return address;
     }
 
     @Override
