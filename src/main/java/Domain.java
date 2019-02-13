@@ -10,6 +10,7 @@ import service.ProjectService;
 
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.List;
 
 public class Domain {
 
@@ -49,10 +50,22 @@ public class Domain {
         emplProj.setProjectId(1L);
 
         try{
-            addressService.add(address);
-            employeeService.add(employee);
-            projectService.add(project);
-            emplProjService.add(emplProj);
+//            addressService.add(address);
+//            employeeService.add(employee);
+//            projectService.add(project);
+//            emplProjService.add(emplProj);
+
+            List<Address> addressList = addressService.getAll();
+            for(Address a: addressList){
+                System.out.println(a);
+            }
+
+            List<Employee> employeeList = employeeService.getAll();
+            for(Employee a: employeeList){
+                System.out.println(a);
+
+            }
+
         } catch (SQLException e){
             e.printStackTrace();
         }
