@@ -1,8 +1,10 @@
 import bl.Util;
 import entity.Address;
+import entity.EmplProj;
 import entity.Employee;
 import entity.Project;
 import service.AddressService;
+import service.EmplProjService;
 import service.EmployeeService;
 import service.ProjectService;
 
@@ -18,6 +20,7 @@ public class Domain {
         AddressService addressService = new AddressService();
         EmployeeService employeeService = new EmployeeService();
         ProjectService projectService = new ProjectService();
+        EmplProjService emplProjService = new EmplProjService();
 
         Address address = new Address();
         address.setId(1L);
@@ -41,10 +44,15 @@ public class Domain {
         project.setId(1L);
         project.setTitle("The perfect coders project");
 
+        EmplProj emplProj = new EmplProj();
+        emplProj.setEmployeeId(1L);
+        emplProj.setProjectId(1L);
+
         try{
             addressService.add(address);
             employeeService.add(employee);
             projectService.add(project);
+            emplProjService.add(emplProj);
         } catch (SQLException e){
             e.printStackTrace();
         }
